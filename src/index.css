@@ -64,6 +64,10 @@ li {
 .pagination {
   display: flex;
   font-size: larger;
+  color: #1a1a1a;
+  background-color: antiquewhite;
+  font-style: italic;
+  border-radius: 5px;
 }
 .todo-list {
   display: flex;
@@ -95,7 +99,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #4b976d;
   }
   a:hover {
     color: #747bff;
