@@ -65,14 +65,14 @@ function App() {
           {result}
           </ol>
         </p>
-        <Pagination
+        {result ? <Pagination
           className='pagination'
           activePage={activePage}
           itemsCountPerPage={itemsPerPage}
           totalItemsCount={totalItemsCount}
           pageRangeDisplayed={pageRangeDisplayed}
           onChange={handlePageChange}
-        />
+        /> : null}
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
