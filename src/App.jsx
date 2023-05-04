@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+
 import Pagination from 'react-js-pagination';
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
 function App() {
@@ -26,26 +26,32 @@ function App() {
       setTodo([...todo, {
         id: numero,
         tared: nome,
+        check: false,
       }]);
     }
     setNome('');
   };
 
+  const handleCheck = (id, e) => {
+    const data = todo.map((item) => {
+      if (item.id === id){
+          item.check = e.target.checked;
+      } 
+      return item;
+    });
+    setTodo(data);
+  }
+
   const result = (todo.length > 0 ? todo.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage).map((item, index) => (
     <div key={index} className='todo-list'>
-      <li>{item.tared}</li>
+      <li className={item.check ? 'li-todo-riscado' : 'li-todo' }>{item.tared}</li>
+      <input type='checkbox' checked={item.check} onClick={(e) => handleCheck(item.id, e)}/>
       <button type='button' onClick={() => handleClick(item.id)}>Exit</button>
     </div>
   )): null);
   return (
     <>
       <div>
-        {/* <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
       </div>
       <h1>Vite + React</h1>
       <div className="card">
